@@ -27,8 +27,11 @@
 """
 思路:
 27进制..
+不,是26进制,,原数全减1,,方便配对..(A~Z)..
+我尽然没敢做呢..
 """
 
+from collections import deque
 class Solution(object):
     def convertToTitle(self, n):
         """
@@ -36,12 +39,20 @@ class Solution(object):
         :rtype: str
         """
 
-        i = 1
-        ans = []
+        column  = deque()
 
-        while n:
-            ans.append(chr(n%26+65))
-            n = n//(27)**i
-            i += 1
+        while n>0:
+            n,output = divmod(n-1,26)
+            column.appendleft(output)
 
-        return "".join(ans[::-1])
+        return "".join([chr(i+ord('A')) for i in column])
+
+        # i = 1
+        # ans = []
+
+        # while n:
+        #     ans.append(chr(n%26+65))
+        #     n = n//(26)**i
+        #     i += 1
+
+        # return "".join(ans[::-1])
