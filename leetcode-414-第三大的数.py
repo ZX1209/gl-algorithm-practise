@@ -25,10 +25,41 @@
 # 存在两个值为2的数，它们都排第二。
 
 
+"""
+思路:
+排序??,,,
 
+嗯, 模块导入还是有点耗时呢..
+"""
+
+from heapq import nlargest
 class Solution(object):
     def thirdMax(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
+
+        ans = nlargest(3,set(nums))
+
+        return ans[-1] if len(ans)>=3 else ans[0]
+
+
+
+
+执行用时为 24 ms 的范例
+class Solution(object):
+    def thirdMax(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+
+        data = list(set(nums))
+        data.sort()
+
+        if len(data) <3:
+            return data[-1]
+        else:
+            return data[-3]

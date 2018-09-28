@@ -1,7 +1,12 @@
-leetcode-889-根据前序和后序遍历构造二叉树.py
+# leetcode-889-根据前序和后序遍历构造二叉树.py
 
 # Definition for a binary tree node.
 
+
+"""
+思路:
+我记得是 前和后是相反的..所以,,可以结合推出树来
+"""
 
 class TreeNode:
     def __init__(self, x):
