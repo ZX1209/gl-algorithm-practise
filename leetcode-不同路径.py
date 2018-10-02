@@ -31,19 +31,23 @@
 感觉是数学题啊... 
 
 先试试深搜吧
+
+可以优化到不用深搜呢..
 """
 
 
 class Solution(object):
     def dfs(self,r,c):
-        if r==(self.rl-1) and c == (self.cl-1):
-            self.ans += 1
-            return None
+        if self.note[r][c]!=-1:
+            return self.note[r][c]
 
-        for dr,dc in ((-1,0),(0,1)):
-            tmp = 0
+        tmp = 0
+        for dr,dc in ((1,0),(0,1)):
             if 0<=r+dr<self.rl and 0<=c+dc<self.cl:
-                tmp = self.dfs(r+dr,c+dc)
+                tmp += self.dfs(r+dr,c+dc)
+
+        self.note[r][c] = tmp
+        return self.note[r][c]
 
 
     def uniquePaths(self, m, n):
@@ -52,11 +56,64 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        if m<=0 or n<=0 :
+            return 0 
         self.rl = n
         self.cl = m
-        self.ans = 0
-        self.note = [[-1]*cl]*rl
 
-        self.dfs(0,0)
+        self.note = [[-1]*self.cl for j in range(self.rl)]
+        self.note[self.rl-1][self.cl-1] = 1
+        tmp = self.dfs(0,0)
+        print(self.note)
+        return tmp
 
-        return self.ans
+
+执行用时为 20 ms 的范例
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        totalStep = m + n - 2
+        minStep = min(m-1, n-1)
+        fenzi = 1
+        fenmu = 1
+        for i in range(minStep, 0, -1):
+            fenzi *= totalStep
+            totalStep -= 1
+            fenmu *= i
+            a = fenzi
+            b =fenmu
+            while b!= 0:
+                r = b
+                b = a % b
+                a = r
+            fenzi = int(fenzi / a)
+            fenmu = int(fenmu / a)
+        return int(fenzi / fenmu)
+
+执行用时为 24 ms 的范例
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        
+        route = [[0]*m for _ in range(n)]
+        route[0][0] = 1
+
+        for i in range(n):
+            for j in range(m):
+                if i == 0 and j ==0:
+                    continue
+                if i == 0:
+                    route[i][j]  = route[i][j-1]
+                elif j==0:
+                    route[i][j] = route[i-1][j]
+                elif i - 1>=0 and j-1 >=0:
+                    route[i][j] = route[i][j-1]+route[i-1][j]
+        return route[n-1][m-1]
