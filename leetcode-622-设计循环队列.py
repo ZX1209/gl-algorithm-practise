@@ -17,7 +17,7 @@
 # circularQueue.enQueue(1);  // 返回true
 
 # circularQueue.enQueue(2);  // 返回true
-
+ 
 # circularQueue.enQueue(3);  // 返回true
 
 # circularQueue.enQueue(4);  // 返回false,队列已满
@@ -49,6 +49,10 @@ class MyCircularQueue:
         Initialize your data structure here. Set the size of the queue to be k.
         :type k: int
         """
+        self.front = 0
+        self.rear = 0
+        self.queue = [-1]*k
+        self.k = k
         
 
     def enQueue(self, value):
@@ -57,6 +61,12 @@ class MyCircularQueue:
         :type value: int
         :rtype: bool
         """
+        if not self.isFull():
+            self.rear+=self.k-1
+            self.queue[self.rear%self.k] = value
+            return True
+        else:
+            return False
         
 
     def deQueue(self):
@@ -64,6 +74,12 @@ class MyCircularQueue:
         Delete an element from the circular queue. Return true if the operation is successful.
         :rtype: bool
         """
+        if not self.isEmpty():
+            self.front+=self.k-1
+            self.queue[self.front%self.k] = -1
+            return True
+        else:
+            return False
         
 
     def Front(self):
@@ -71,6 +87,11 @@ class MyCircularQueue:
         Get the front item from the queue.
         :rtype: int
         """
+        if self.rear!=self.front:
+            return self.queue[(self.front+self.k-1)%self.k]
+        else:
+            return -1
+
         
 
     def Rear(self):
@@ -78,6 +99,10 @@ class MyCircularQueue:
         Get the last item from the queue.
         :rtype: int
         """
+        if self.rear!=self.front:
+            return self.queue[(self.rear)%self.k]
+        else:
+            return -1
         
 
     def isEmpty(self):
@@ -85,6 +110,7 @@ class MyCircularQueue:
         Checks whether the circular queue is empty or not.
         :rtype: bool
         """
+        return self.rear%self.k == self.front%self.k and self.queue[(self.rear)%self.k]==-1
         
 
     def isFull(self):
@@ -92,6 +118,94 @@ class MyCircularQueue:
         Checks whether the circular queue is full or not.
         :rtype: bool
         """
+        return self.rear%self.k == self.front%self.k and self.queue[(self.rear)%self.k]!=-1
+        
+
+
+# Your MyCircularQueue object will be instantiated and called as such:
+# obj = MyCircularQueue(k)
+# param_1 = obj.enQueue(value)
+# param_2 = obj.deQueue()
+# param_3 = obj.Front()
+# param_4 = obj.Rear()
+# param_5 = obj.isEmpty()
+# param_6 = obj.isFull()
+
+
+
+
+执行用时为 76 ms 的范例
+class MyCircularQueue:
+
+    def __init__(self, k):
+        """
+        Initialize your data structure here. Set the size of the queue to be k.
+        :type k: int
+        """
+        self.queue=[]
+        self.size=k
+        self.front=0
+        self.rear=0
+        
+
+    def enQueue(self, value):
+        """
+        Insert an element into the circular queue. Return true if the operation is successful.
+        :type value: int
+        :rtype: bool
+        """
+        if not self.isFull():
+            self.queue.append(value)
+            return True
+        else: return False
+        
+
+    def deQueue(self):
+        """
+        Delete an element from the circular queue. Return true if the operation is successful.
+        :rtype: bool
+        """
+        if not self.isEmpty():
+            self.queue.pop(0)
+            return True
+        else: return False
+        
+
+    def Front(self):
+        """
+        Get the front item from the queue.
+        :rtype: int
+        """
+        if self.isEmpty():
+            return -1
+        else:
+            return(self.queue[0])
+
+    def Rear(self):
+        """
+        Get the last item from the queue.
+        :rtype: int
+        """
+        if self.isEmpty():
+            return -1
+        else:
+            return(self.queue[-1])
+        
+
+    def isEmpty(self):
+        """
+        Checks whether the circular queue is empty or not.
+        :rtype: bool
+        """
+        return len(self.queue)==0
+        
+
+    def isFull(self):
+        """
+        Checks whether the circular queue is full or not.
+        :rtype: bool
+        """
+        return len(self.queue)==self.size
         
 
 
