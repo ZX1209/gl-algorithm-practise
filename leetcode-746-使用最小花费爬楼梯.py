@@ -21,6 +21,10 @@
 # 每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。
 
 
+"""
+思路:
+状态转移方程
+"""
 
 class Solution(object):
     def minCostClimbingStairs(self, cost):
@@ -28,4 +32,17 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        
+        i = 2
+        while i<len(cost):
+            cost[i]+=min(cost[i-1],cost[i-2])
+            i+=1
+        return min(cost[-2],cost[-1])
+
+
+执行用时为 44 ms 的范例
+class Solution(object):
+    def minCostClimbingStairs(self, cost):
+        f1 = f2 = 0
+        for x in reversed(cost):
+            f1, f2 = x + min(f1, f2), f1
+        return min(f1, f2)
