@@ -26,6 +26,13 @@
 #   [5]
 # ]
 
+"""
+思路:
+范例,思路差不多..呢.
+
+
+
+"""
 
 
 class Solution:
@@ -35,6 +42,7 @@ class Solution:
         :type target: int
         :rtype: List[List[int]]
         """
+        candidates.sort()
         ans = []
         def dfs(target,preList):
             nonlocal candidates,ans
@@ -51,9 +59,37 @@ class Solution:
                     keyvalue = target-candidate
                     if keyvalue>=0:
                         dfs(keyvalue,preList+[candidate])
-                    candidates.insert(i,candidate)
+                        candidates.insert(i,candidate)
+                    else:
+                        candidates.insert(i,candidate)
+                        break;
 
 
 
         dfs(target,[])
         return ans
+
+
+执行用时为 52 ms 的范例
+class Solution:
+    def combinationSum2(self, candidates, target):
+        r = []
+        path = []
+        candidates.sort()
+        self.getPath(candidates, target, [], r,0)
+        return r
+    def getPath(self, candidates, target, path, r,start):
+        if target == 0:
+
+            r.append(path)
+            return
+        if target < 0:
+            return
+        for i in range(start, len(candidates)):
+            if i > start and candidates[i] == candidates[i - 1]:
+                continue
+            if candidates[i] > target:
+                break
+            self.getPath(candidates,target - candidates[i], path + [candidates[i]],
+                               r, i+1)
+        
