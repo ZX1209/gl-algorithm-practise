@@ -127,8 +127,42 @@ class Solution(object):
             return False
         else:
             pairs = []
-            for a, b in itertools.izip(A, B):
+            for a, b in zip(A, B):
                 if a != b:
                     pairs.append((a, b))
                 if len(pairs) >= 3: return False
             return len(pairs) == 2 and pairs[0] == pairs[1][::-1]
+
+
+执行用时为 40 ms 的范例
+class Solution:
+    def buddyStrings(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: bool
+        """
+        if len(A) != len(B):
+            return False
+        if A == B:
+            if len(set(A)) >= len(A):
+                return False
+            return True
+        sign = 0
+        m = None
+        n = None
+        for i, j in enumerate(A):
+            if j != B[i]:
+                if m:
+                    if sign:
+                        return False
+                    if j != n or B[i] != m:
+                        return False
+                    sign = 1
+                    continue
+                m = j
+                n = B[i]
+        else:
+            if not sign:
+                return False
+            return True

@@ -22,7 +22,6 @@
 # 不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理
 
 
-
 class Solution:
     def multiply(self, num1, num2):
         """
@@ -30,5 +29,67 @@ class Solution:
         :type num2: str
         :rtype: str
         """
-        num1 = map(int,num1.split())
-        num2 = map(int,num2.split())
+        # 参考    
+        num1,num2 = num1[::-1],num2[::-1]
+        result = [0]*(len(num1)+len(num2))
+
+        for i in range(len(num1)):
+            int1 = ord(num1[i])-ord('0')
+
+            for j in range(len(num2)):
+                int2 = ord(num2[j])-ord('0')
+
+                tens,units = divmod(int1*int2,10)
+
+                result[i+j] += units
+
+                if result[i+j]>9:
+                    result[i+j+1] += result[i+j]//10
+                    result[i+j]%=10
+
+                result[i+j+1] += tens
+                if result[i+j+1]>9:
+                    result[i+j+2] += result[i+j+1]//10
+                    result[i+j+1] %= 10
+
+            while len(result) > 1 and result[-1] ==0:
+                result.pop()
+
+            return "".join(map(str,result[::-1]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # num1 = list(map(int,[c for c in reversed(num1)]))
+        # num2 = list(map(int,[c for c in reversed(num2)]))
+
+        # ans = []
+        # up = 0
+        # for c1,c2 in itertools.zip_longest(num1,num2,fillvalue=0):
+        #     tmp = c1*c2+up
+        #     up = 0
+
+        #     if tmp>9:
+        #         up=tmp/10
+        #         tmp=tmp%10
+
+        #     ans.append(tmp)
+
+        # if up:
+        #     ans.append(up)
+
+        # return "".join(list(map(str,reversed(ans))))
+
