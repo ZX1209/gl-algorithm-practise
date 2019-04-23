@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="UTF-8">
+    <title>douban_page</title>
+    <link rel="stylesheet" href="main.css">
+    <script language="JavaScript" type="text/javascript" src="./main.js"></script>
+  </head>
+  <body>
+    <div class="header-line" >
+      <!--这里是头部-->
+      
+    </div>
+
+    <div class="main_area" >
+      {% for url in urls %}
+      <div class="movie">
+          <img src="{{url}}">
+          <p>title</p>
+          <p>rate</p>
+          <p>start</p>
+      </div>
+      {% endfor %}
+
+
+
+      <div class="movies">
+        <div class="movie">
+          <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg" >
+          <p>title</p>
+          <p>rate</p>
+          <p>start</p>
+        </div>
+      </div>
+     
+    </div>
+
+
+  </body> 
+</html>
