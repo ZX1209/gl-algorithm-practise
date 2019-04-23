@@ -1,0 +1,148 @@
+Problem A. Big Buttons
+Confused? Read the quick-start guide.
+Small input
+9 points	
+Solve A-small
+You may try multiple times, with penalties for wrong submissions.
+Large input
+13 points	
+You must solve the small input first.
+You have 8 minutes to solve 1 input file. (Judged after contest.)
+Problem
+You are a contestant on a popular new game show and are playing for the grand prize!
+
+There are two big buttons, a red one and a black one. You will make a sequence of exactly N button presses.
+
+There are lots of different sequences of presses you could make, but there are P forbidden prefixes, each of length no greater than N. If you make a sequence of presses which begins with any of the forbidden sequences, you will not win the grand prize. It is fine for your sequence to contain one or more forbidden prefixes as long as they do not appear at the start of your sequence.
+
+A winning sequence must consist of exactly N button presses and must not begin with one of the forbidden prefixes. How many different winning sequences are there?
+
+Input
+The first line of the input gives the number of test cases, T. T test cases follow. Each test case starts with a line containing two integers N and P, as described above. Then, there are P more lines, each of which contains a string of between 1 and N characters, inclusive, describing one of the forbidden sequences of presses. An R represents pressing the red button, whereas a B represents pressing the black button.
+
+Output
+For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of winning sequences, as desribed above.
+
+Limits
+1 ≤ T ≤ 100.
+1 ≤ P ≤ min(2N, 100).
+Each forbidden prefix is between 1 and N characters long, inclusive.
+No two forbidden prefixes will be the same.
+Small dataset
+1 ≤ N ≤ 10.
+Large dataset
+1 ≤ N ≤ 50.
+Sample
+
+Input 
+ 	
+Output 
+ 
+4
+3 2
+BBB
+RB
+5 1
+R
+4 3
+R
+B
+RBRB
+50 5
+BRBRBBBRBRRRBBB
+BRBRBRRRBRRRBRB
+BBBRBBBRBRRRBBB
+BRBRBRRRBRRRB
+BRBRBBBRBBBRB
+
+Case #1: 5
+Case #2: 16
+Case #3: 0
+Case #4: 1125556309458944
+
+Note that the last Sample case would not appear in the Small dataset.
+
+In the first case, you must make a sequence of 3 presses. There are 8 possible sequences of three presses, but some of them will cause you to lose the game. They are listed below:
+
+RBB. This is forbidden since it starts with the first forbidden sequence (RB).
+RBR. This is forbidden since it starts with the first forbidden sequence (RB).
+BBB. This is forbidden since it starts with the second forbidden sequence (BBB).
+Thus, there are only 5 winning sequences.
+In the second case, you must make a sequence of 5 presses. There is only one forbidden sequence, which is R. This means that the first press must be B, and the next 4 presses can be either button. This gives a total of 16 different button presses.
+
+In the third case, you must make a sequence of 4 presses. There are three forbidden sequences, but since every possible sequence begins with either R (the first forbidden sequence) or B (the second forbidden sequence), there are no winning sequences. So the answer is 0.
+
+
+问题A.大按钮
+困惑？阅读快速入门指南。
+小投入
+9点
+解决A小问题
+您可以尝试多次，对错误的提交进行处罚。
+大输入
+13分
+您必须先解决小输入。
+你有8分钟的时间来解决1个输入文件。 （比赛后评判。）
+问题
+您是一个受欢迎的新游戏节目的参赛者，正在为大奖而战！
+
+有两个大按钮，一个是红色，另一个是黑色。您将按顺序按下N按钮。
+
+你可以制作许多不同的印刷机序列，但是有P禁止的前缀，每个长度不大于N.如果你制作一系列以任何禁止序列开头的印刷机，你就不会赢得大奖。您的序列可以包含一个或多个禁用前缀，只要它们不出现在序列的开头即可。
+
+获胜序列必须包含N个按钮，并且不得以其中一个禁用前缀开头。有多少不同的获胜序列？
+
+输入
+输入的第一行给出了测试用例的数量，T。T测试用例如下。如上所述，每个测试用例以包含两个整数N和P的行开始。然后，还有P行，每行包含一个介于1和N个字符之间的字符串，包括一个禁止的按下序列。 R表示按下红色按钮，而B表示按下黑色按钮。
+
+产量
+对于每个测试用例，输出一行包含Case #x：y，其中x是测试用例编号（从1开始），y是获胜序列的数量，如上所述。
+
+范围
+1≤T≤100。
+1≤P≤min（2N，100）。
+每个禁用前缀长度在1到N个字符之间。
+没有两个禁止的前缀是相同的。
+小数据集
+1≤N≤10。
+大数据集
+1≤N≤50。
+样品
+
+输入
+ 
+产量
+ 
+4
+3 2
+BBB
+RB
+5 1
+[R
+4 3
+[R
+乙
+RBRB
+50 5
+BRBRBBBRBRRRBBB
+BRBRBRRRBRRRBRB
+BBBRBBBRBRRRBBB
+BRBRBRRRBRRRB
+BRBRBBBRBBBRB
+
+案例＃1：5
+案例＃2：16
+案例＃3：0
+案例＃4：1125556309458944
+
+请注意，最后一个示例案例不会出现在Small数据集中。
+
+在第一种情况下，您必须进行3次按压。有三种可能的顺序，三次按下，但其中一些将导致你输掉比赛。它们列在下面：
+
+RBB。这是禁止的，因为它以第一个禁止序列（RB）开始。
+RBR。这是禁止的，因为它以第一个禁止序列（RB）开始。
+BBB。这是禁止的，因为它以第二个禁止序列（BBB）开始。
+因此，只有5个获胜序列。
+在第二种情况下，您必须进行5次按下。只有一个禁止序列，即R。这意味着第一次按下必须是B，接下来的4次按下可以是按钮。这总共提供了16种不同的按钮按下。
+
+在第三种情况下，您必须按4次按顺序。有三个禁止序列，但由于每个可能的序列都以R（第一个禁止序列）或B（第二个禁止序列）开头，因此没有获胜序列。所以答案是0。

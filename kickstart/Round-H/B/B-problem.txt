@@ -1,0 +1,117 @@
+Problem B. Mural
+Confused? Read the quick-start guide.
+Small input
+14 points	
+Solve B-small
+You may try multiple times, with penalties for wrong submissions.
+Large input
+19 points	
+You must solve the small input first.
+You have 8 minutes to solve 1 input file. (Judged after contest.)
+Problem
+Thanh wants to paint a wonderful mural on a wall that is N sections long. Each section of the wall has a beauty score, which indicates how beautiful it will look if it is painted. Unfortunately, the wall is starting to crumble due to a recent flood, so he will need to work fast!
+
+At the beginning of each day, Thanh will paint one of the sections of the wall. On the first day, he is free to paint any section he likes. On each subsequent day, he must paint a new section that is next to a section he has already painted, since he does not want to split up the mural.
+
+At the end of each day, one section of the wall will be destroyed. It is always a section of wall that is adjacent to only one other section and is unpainted (Thanh is using a waterproof paint, so painted sections can't be destroyed).
+
+The total beauty of Thanh's mural will be equal to the sum of the beauty scores of the sections he has painted. Thanh would like to guarantee that, no matter how the wall is destroyed, he can still achieve a total beauty of at least B. What's the maximum value of B for which he can make this guarantee?
+
+Input
+The first line of the input gives the number of test cases, T. T test cases follow. Each test case starts with a line containing an integer N. Then, another line follows containing a string of N digits from 0 to 9. The i-th digit represents the beauty score of the i-th section of the wall.
+
+Output
+For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the maximum beauty score that Thanh can guarantee that he can achieve, as described above.
+
+Limits
+1 ≤ T ≤ 100.
+Small dataset
+2 ≤ N ≤ 100.
+Large dataset
+For exactly 1 case, N = 5 × 106; for the other T - 1 cases, 2 ≤ N ≤ 100.
+Sample
+
+Input 
+ 	
+Output 
+ 
+4
+4
+1332
+4
+9583
+3
+616
+10
+1029384756
+
+Case #1: 6
+Case #2: 14
+Case #3: 7
+Case #4: 31
+
+In the first sample case, Thanh can get a total beauty of 6, no matter how the wall is destroyed. On the first day, he can paint either section of wall with beauty score 3. At the end of the day, either the 1st section or the 4th section will be destroyed, but it does not matter which one. On the second day, he can paint the other section with beauty score 3.
+
+In the second sample case, Thanh can get a total beauty of 14, by painting the leftmost section of wall (with beauty score 9). The only section of wall that can be destroyed is the rightmost one, since the leftmost one is painted. On the second day, he can paint the second leftmost section with beauty score 5. Then the last unpainted section of wall on the right is destroyed. Note that on the second day, Thanh cannot choose to paint the third section of wall (with beauty score 8), since it is not adjacent to any other painted sections.
+
+In the third sample case, Thanh can get a total beauty of 7. He begins by painting the section in the middle (with beauty score 1). Whichever section is destroyed at the end of the day, he can paint the remaining wall at the start of the second day.
+
+
+
+问题B.壁画
+困惑？阅读快速入门指南。
+小投入
+14分
+解决B小
+您可以尝试多次，对错误的提交进行处罚。
+大输入
+19分
+您必须先解决小输入。
+你有8分钟的时间来解决1个输入文件。 （比赛后评判。）
+问题
+Thanh想在N长的墙上画一幅精美的壁画。墙的每个部分都有一个美丽的分数，表示如果它被涂上了它的外观。不幸的是，由于最近的洪水，墙壁开始崩溃，所以他需要快速工作！
+
+在每天的开始，Thanh将绘制墙壁的一个部分。在第一天，他可以自由地画出他喜欢的任何部分。在接下来的每一天，他必须画一个他已经画过的部分旁边的新部分，因为他不想分开壁画。
+
+在每天结束时，墙的一部分将被摧毁。它总是一段墙只与另一个部分相邻而且未上漆（Thanh使用的是防水涂料，因此涂漆的部分不能被破坏）。
+
+Thanh的壁画的总体美丽将等于他画的部分的美丽总和。 Thanh想要保证，无论墙壁是如何被摧毁的，他仍然可以达到至少B的总体美感.B他可以做出这种保证的最大价值是多少？
+
+输入
+输入的第一行给出了测试用例的数量，T。T测试用例如下。每个测试用例以包含整数N的行开始。然后，另一行包含从0到9的N个数字的字符串。第i个数字表示墙的第i个部分的美分。
+
+产量
+对于每个测试用例，输出一行包含Case #x：y，其中x是测试用例编号（从1开始），y是Thanh可以保证他可以实现的最大美分，如上所述。
+
+范围
+1≤T≤100。
+小数据集
+2≤N≤100。
+大数据集
+恰好1例，N = 5×106;对于其他T  -  1例，2≤N≤100。
+样品
+
+输入
+ 
+产量
+ 
+4
+4
+1332
+4
+9583
+3
+616
+10
+1029384756
+
+案例＃1：6
+案例＃2：14
+案例＃3：7
+案例＃4：31
+
+在第一个样本案例中，无论墙壁如何被破坏，Thanh都可以获得6的总体美感。在第一天，他可以画出任何一段墙的美丽得分3.在一天结束时，第一部分或第四部分将被摧毁，但无论哪一个都无关紧要。在第二天，他可以画出另一部分，得分为3。
+
+在第二个样本案例中，Thanh可以通过绘制墙的最左边部分（美分9）获得14的总美。可以销毁的唯一墙壁部分是最右边的墙壁，因为最左边的墙壁被涂漆。在第二天，他可以用美分5画出第二个最左边的部分。然后右边墙上最后一个未上漆的部分被摧毁。请注意，在第二天，Thanh不能选择绘制墙的第三部分（美评8），因为它不与任何其他绘画部分相邻。
+
+在第三个样本案例中，Thanh可以获得7的总体美。他首先在中间绘制部分（美评1）。无论哪一部分在一天结束时被摧毁，他都可以在第二天开始时绘制剩余的墙壁。
